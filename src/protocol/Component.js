@@ -144,7 +144,8 @@ class ComponentProtocol extends EventEmitter {
         }
         if (instance.isSubgraph()
           && library === this.transport.options.namespace
-          && !this.transport.graph.graphs[component]) {
+          && !this.transport.graph.graphs[component]
+          && instance.network) {
           // Register subgraph also to the graph protocol handler
           return this.transport.graph.registerGraph(component, instance.network.graph, null, false)
             .then(() => {
